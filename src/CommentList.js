@@ -1,12 +1,13 @@
-import React ,{useState,useEffect} from 'react'
-import axios from 'axios'
+import React /*,{useState,useEffect}*/ from 'react'
+//import axios from 'axios'
 
-export default ({postID})=>{
+export default ({/*postID*/ comments})=>{
     
-    const [comment,setComment]=useState([])
+    // No use as we have Microservice ------
+    /*const [comment,setComment]=useState([])
 
     const fetchData=async()=>{
-        const res=await axios.get(`http://localhost:4001/posts/{$postID}/comments`)
+        const res=await axios.get(`http://localhost:4001/posts/${postID}/comments`)
         setComment(res.data);
     }
 
@@ -14,8 +15,9 @@ export default ({postID})=>{
         fetchData()
     },[])
 
+    */
 
-    const  renderComments=comment.map(element=>{
+    const  renderComments=comments.map(element=>{
         return (<li key={element.id}>{element.content}</li>)
     })
 

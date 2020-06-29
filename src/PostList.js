@@ -9,7 +9,8 @@ export default()=>{
     const  [posts,setPosts]=useState({})
     
     const fetchPosts=async()=>{
-        const res= await axios.get('http://localhost:4000/posts')
+        const res= await axios.get('http://localhost:4002/posts')
+        console.log("Inside Post List :",res.data)
         setPosts(res.data)
     };
 
@@ -20,13 +21,13 @@ export default()=>{
     console.log(posts)
 
     const renderedPost=Object.values(posts).map(post=>{
-
+        console.log("Before returning : ",post)
         return (
             <div className="card" style={{width:'30%',marginBottom:'10px'}} key={post.id}>
                 <div className='card-body'>
                         <h3>{post.title}</h3>
                 </div>
-                <CommentList postID={post.id} />
+                <CommentList comments={post.comments} />
                 <CommentCreate postID={post.id} />
                    
             </div>
