@@ -18,7 +18,18 @@ export default ({/*postID*/ comments})=>{
     */
 
     const  renderComments=comments.map(element=>{
-        return (<li key={element.id}>{element.content}</li>)
+        let content;
+        if(element.status=='approved'){
+            content=element.content
+        }
+        if(element.status==='pending'){
+            content='This comment is under moderation';
+        }
+        if(element.status==='rejected'){
+            content='This comment has been rejected'
+        }
+        
+        return (<li key={element.id}>{content}</li>)
     })
 
     return (
